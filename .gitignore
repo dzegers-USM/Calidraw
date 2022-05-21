@@ -1,0 +1,5 @@
+# Renders #
+*.png
+
+# VSCode Settings #
+.vscode/*
