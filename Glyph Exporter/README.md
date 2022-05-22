@@ -10,4 +10,4 @@ Se recomienda agregar FontForgeBuilds/bin a PATH.
 
 - font_path: Locación de archivo .ttf
 - extension: Extensión de archivos resultantes. Los tipos soportados son detallados en la [documentación de FontForge](https://fontforge.org/docs/scripting/scripting-alpha.html), según la función "Export(format[, bitmap-size])".
-- height: 
+- height: Altura en pixeles de archivos resultantes
