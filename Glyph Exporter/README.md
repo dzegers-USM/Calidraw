@@ -3,6 +3,8 @@ Ejecutar mediante *ffpython*, incluido en instalaciones de [FontForge](https://f
 ffpython se ubica en FontForgeBuilds/bin.
 
 ## Uso
-> ffpython export.py {font_path} {height}
+> ffpython export.py {font_path} {extension} {height}
 
-Donde fontPath refiere a la locación del archivo .ttf cuyos caracteres se van a exportar, y height la altura en pixeles de las imágenes resultantes.
+- font_path: Locación de archivo .ttf
+- extension: Extensión de archivos resultantes. Los tipos soportados son detallados en la [documentación de FontForge](https://fontforge.org/docs/scripting/scripting-alpha.html), según la función "Export(format[, bitmap-size])".
+- height: 

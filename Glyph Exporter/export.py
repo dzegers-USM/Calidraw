@@ -2,9 +2,10 @@ import os
 import errno
 import fontforge
 
-if (len(os.sys.argv) == 3):
+if (len(os.sys.argv) == 4):
     font_path = os.sys.argv[1]
-    height = os.sys.argv[2]
+    extension = os.sys.argv[2]
+    height = os.sys.argv[3]
     font = fontforge.open(font_path)
     try:
         os.mkdir("out")
@@ -16,9 +17,9 @@ if (len(os.sys.argv) == 3):
         if font[glyph].isWorthOutputting():
             if font[glyph].glyphname in "abcdefghijklmnopqrstuvwxyz":
                 # Prevents, for ex., "a.png" overwriting "A.png"
-                fpath = "out/" + glyph + "lower.png"
+                fpath = "out/" + glyph + "lower." + extension
             else:
-                fpath = "out/" + glyph + ".png"
+                fpath = "out/" + glyph + "." + extension
             font[glyph].export(fpath, int(height) - 1)
 else:
     print("usage: ffpython export.py {font_path} {height}")
