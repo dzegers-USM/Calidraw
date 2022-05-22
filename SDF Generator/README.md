@@ -6,5 +6,5 @@ Las imágenes recibidas por el programa deben ser de dos colores, sin valores en
 ## Uso 
 > python gen.py {img_path} {max_dist}
 
--img_path: Locación de imágenes a las que se les aplicará SDF
--max_dist: Distancia máxima a la frontera de cada figura
+- img_path: Locación de imágenes a las que se les aplicará SDF
+- max_dist: Distancia máxima a la frontera de cada figura
