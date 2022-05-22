@@ -80,6 +80,7 @@ if (len(os.sys.argv) == 3):
         img_path = os.path.join(img_dir, img_name)
         img = cv2.imread(img_path, 0)  # np array
         graph, dist, visited, queue = preSDF(img)
+        print(dist)
         
 else:
     print("usage: python gen.py {img_dir} {max_dist}")
