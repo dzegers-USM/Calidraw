@@ -9,5 +9,5 @@ Se recomienda agregar FontForgeBuilds/bin a PATH.
 > ffpython export.py {font_path} {extension} {height}
 
 - font_path: Locación de archivo .ttf
-- extension: Extensión de archivos resultantes. Los tipos soportados son detallados en la [documentación de FontForge](https://fontforge.org/docs/scripting/scripting-alpha.html), según la función "Export(format[, bitmap-size])".
+- extension: Extensión de archivos resultantes, sin incluir el punto. Los tipos soportados son detallados en la [documentación de FontForge](https://fontforge.org/docs/scripting/scripting-alpha.html), según la función "Export(format[, bitmap-size])".
 - height: Altura en pixeles de archivos resultantes
