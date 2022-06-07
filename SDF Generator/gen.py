@@ -68,7 +68,6 @@ def bfs(visited, dist, graph, queue):
 def recenterSDF(img, dist_matrix, max_dist):
     row, col = img.shape
     dist_matrix = np.reshape(dist_matrix, (row, col))
-    print(dist_matrix)
     for i in range(0, row):
         for j in range(0, col):
             dist = min(dist_matrix[i][j], max_dist)
@@ -76,7 +75,6 @@ def recenterSDF(img, dist_matrix, max_dist):
             color_diff *= 1 if (img[i][j] != 0) else -1
             dist_matrix[i][j] = min(128 + color_diff, 255)
     return dist_matrix
-
 
 def sdf(img, max_dist):
     graph, dist, visited, queue = preSDF(img)
@@ -95,7 +93,9 @@ if (len(os.sys.argv) == 3):
     for img_name in os.listdir(img_dir):
         img_path = os.path.join(img_dir, img_name)
         img = cv2.imread(img_path, 0)  # np array
-        sdf = sdf(img, max_dist)
+        sdf_img = sdf(img, max_dist)
+        out_path = os.path.join("./out/", img_name)
+        cv2.imwrite(out_path, sdf_img)
    
 else:
     print("usage: python gen.py {img_dir} {max_dist}")
