@@ -55,7 +55,7 @@ def preSDF(img):
             cell_no += 1
     return graph, dist, visited, queue
 
-def bfs(visited, dist, graph, queue):
+def BFS(visited, dist, graph, queue):
     while len(queue) > 0:
         temp = queue.popleft()
         for i in graph[temp]:
@@ -76,26 +76,36 @@ def recenterSDF(img, dist_matrix, max_dist):
             dist_matrix[i][j] = min(128 + color_diff, 255)
     return dist_matrix
 
-def sdf(img, max_dist):
+def SDF(img, max_dist):
     graph, dist, visited, queue = preSDF(img)
-    dist = bfs(visited, dist, graph, queue)
+    dist = BFS(visited, dist, graph, queue)
     return recenterSDF(img, dist, max_dist)
 
 if (len(os.sys.argv) == 3):
     img_dir = os.sys.argv[1]
-    max_dist = int(os.sys.argv[2])
+    max_dist = os.sys.argv[2]
+    try:
+        max_dist = int(max_dist)
+    except ValueError:
+        print("max_dist \"", max_dist, "\" cannot be cast as int.")
+        os._exit()
+
     try:
         os.mkdir("out")
-    except OSError as err:
-        if err.errno != errno.EEXIST:
-            raise
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            print(os.strerror(e.errno))
+            os._exit()
 
     for img_name in os.listdir(img_dir):
         img_path = os.path.join(img_dir, img_name)
         img = cv2.imread(img_path, 0)  # np array
-        sdf_img = sdf(img, max_dist)
-        out_path = os.path.join("./out/", img_name)
-        cv2.imwrite(out_path, sdf_img)
+        if (img.size == 0):
+            print("Failed to read ", img_name)
+        else:
+            sdf_img = SDF(img, max_dist)
+            out_path = os.path.join("./out/", img_name)
+            cv2.imwrite(out_path, sdf_img)
    
 else:
-    print("usage: python gen.py {img_dir} {max_dist}")
+    print("Usage: python gen.py {img_dir} {max_dist}")

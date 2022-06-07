@@ -22,4 +22,4 @@ if (len(os.sys.argv) == 4):
                 fpath = "out/" + glyph + "." + extension
             font[glyph].export(fpath, int(height) - 1)
 else:
-    print("usage: ffpython export.py {font_path} {height}")
+    print("Usage: ffpython export.py {font_path} {height}")
