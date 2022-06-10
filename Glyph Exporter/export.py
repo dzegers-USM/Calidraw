@@ -11,7 +11,8 @@ if (len(os.sys.argv) == 4):
         os.mkdir("out")
     except OSError as err:
         if err.errno != errno.EEXIST:
-            raise
+            print("Failed to open provided font")
+            os._exit()
 
     for glyph in font:
         if font[glyph].isWorthOutputting():
@@ -22,4 +23,4 @@ if (len(os.sys.argv) == 4):
                 fpath = "out/" + glyph + "." + extension
             font[glyph].export(fpath, int(height) - 1)
 else:
-    print("Usage: ffpython export.py {font_path} {height}")
+    print("Usage: ffpython export.py {font_path} {extension} {height}")
