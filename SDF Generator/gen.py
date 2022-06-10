@@ -68,13 +68,18 @@ def BFS(visited, dist, graph, queue):
 def recenterSDF(img, dist_matrix, max_dist):
     row, col = img.shape
     dist_matrix = np.reshape(dist_matrix, (row, col))
+    img_sdf = np.full((row, col), -1)
     for i in range(0, row):
         for j in range(0, col):
             dist = min(dist_matrix[i][j], max_dist)
             color_diff = dist * 128/max_dist
             color_diff *= 1 if (img[i][j] != 0) else -1
-            dist_matrix[i][j] = min(128 + color_diff, 255)
-    return dist_matrix
+            new_color = min(128 + color_diff, 255)
+            if (img_sdf[i][j] == -1):
+                img_sdf[i][j] = new_color
+            else:
+                img_sdf[i][j] = (img_sdf[i][j] + new_color)/2
+    return img_sdf
 
 def SDF(img, max_dist):
     graph, dist, visited, queue = preSDF(img)
