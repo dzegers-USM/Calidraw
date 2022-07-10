@@ -8,5 +8,5 @@
 # VSCode Settings #
 .vscode/*
 
-# Tests #
-SDF Generator/test/*
+# Python environment #
+env/*
