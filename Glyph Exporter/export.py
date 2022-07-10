@@ -11,7 +11,7 @@ if (len(os.sys.argv) == 4):
         os.mkdir("out")
     except OSError as err:
         if err.errno != errno.EEXIST:
-            print("Failed to open provided font")
+            print("Failed to create \"Glyph Exporter\out\" folder")
             os._exit()
 
     for glyph in font:
