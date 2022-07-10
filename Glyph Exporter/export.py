@@ -10,7 +10,6 @@ if (len(os.sys.argv) == 4):
     try:
         font = fontforge.open(font_path)
     except OSError as err:
-        print("Failed to open or find provided font file.")
         sys.exit(1)
 
     try:
