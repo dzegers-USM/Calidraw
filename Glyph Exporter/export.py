@@ -9,6 +9,8 @@ if (len(os.sys.argv) == 4) or (len(os.sys.argv) == 5):
     height = int(os.sys.argv[3])
     if (len(os.sys.argv) == 5):
         mode = int(os.sys.argv[4])
+    else:
+        mode = 0
     try:
         font = fontforge.open(font_path)
     except OSError as err:
