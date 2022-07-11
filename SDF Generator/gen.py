@@ -75,10 +75,7 @@ def recenterSDF(img, dist_matrix, max_dist):
             color_diff = dist * 128/max_dist
             color_diff *= 1 if (img[i][j] != 0) else -1
             new_color = min(128 + color_diff, 255)
-            if (img_sdf[i][j] == -1):
-                img_sdf[i][j] = new_color
-            else:
-                img_sdf[i][j] = (img_sdf[i][j] + new_color)/2
+            img_sdf[i][j] = new_color
     return img_sdf
 
 def SDF(img, max_dist):
