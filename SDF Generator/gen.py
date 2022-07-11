@@ -108,6 +108,7 @@ if (len(os.sys.argv) == 3):
             sdf_img = SDF(img, max_dist)
             out_path = os.path.join("./out/", img_name)
             cv2.imwrite(out_path, sdf_img)
+            print("Exported \"" + img_name + "\"")
    
 else:
     print("Usage: python gen.py {img_dir} {max_dist}")
